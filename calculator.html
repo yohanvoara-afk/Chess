@@ -213,8 +213,12 @@
 
         function appendToDisplay(value) {
             if (shouldResetDisplay) {
-                currentValue = '0';
-                shouldResetDisplay = false;
+                if (['+', '-', '*', '/', '%'].includes(value)) {
+                    shouldResetDisplay = false;
+                } else {
+                    currentValue = '0';
+                    shouldResetDisplay = false;
+                }
             }
             
             if (currentValue === '0' && value !== '.') {
