@@ -1,4 +1,3 @@
-// Theme Toggle Functionality
 function toggleTheme() {
     const body = document.body;
     const themeIcon = document.getElementById('themeIcon');
@@ -21,7 +20,6 @@ function toggleTheme() {
     }
 }
 
-// Load saved theme on page load
 document.addEventListener('DOMContentLoaded', function() {
     const savedTheme = localStorage.getItem('theme');
     const themeIcon = document.getElementById('themeIcon');

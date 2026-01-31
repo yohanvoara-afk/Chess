@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator - Chess Tacticians</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header class="bg-dark text-white">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/chess-logo.svg" alt="Chess Logo" width="30" height="30" class="d-inline-block align-top">
+                    Chess Tacticians
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="rules.html">Rules</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="tactics.html">Tactics</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="chessboard.html">Chessboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pieces.html">Pieces</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="history.html">History</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#contact">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-outline-light ms-2" id="themeToggle" type="button">
+                                <span id="themeIcon">🌙</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="bg-warning text-dark py-5">
+            <div class="container text-center">
+                <h1 class="display-4">Calculator</h1>
+                <p class="lead">A simple calculator for your mathematical needs</p>
+            </div>
+        </section>
+
+        <section class="py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6 col-lg-5">
+                        <div class="card shadow-lg">
+                            <div class="card-body p-4">
+                                <div class="calculator">
+                                    <div class="calculator-display mb-4">
+                                        <input type="text" id="display" readonly value="0" class="form-control text-end fs-3" style="font-size: 2rem; font-weight: bold; height: 60px;">
+                                    </div>
+                                    <div class="calculator-buttons">
+                                        <div class="row g-3">
+                                            <div class="col-3">
+                                                <button class="btn btn-secondary btn-lg w-100" style="height: 60px; font-size: 1.2rem;" onclick="clearDisplay()">C</button>
+                                            </div>
+                                            <div class="col-3">
+                                                <button class="btn btn-secondary btn-lg w-100" style="height: 60px; font-size: 1.2rem;" onclick="deleteLast()">⌫</button>
+                                            </div>
+                                            <div class="col-3">
+                                                <button class="btn btn-secondary btn-lg w-100" style="height: 60px; font-size: 1.2rem;" onclick="appendToDisplay('/')">/</button>
+                                            </div>
+                                            <div class="col-3">
+                                                <button class="btn btn-secondary btn-lg w-100" style="height: 60px; font-size: 1.2rem;" onclick="appendToDisplay('*')">×</button>
+                                            </div>
+                                        </div>
+                                        <div class="row g-3 mt-3">
+                                            <div class="col-3">
+                                                <button class="btn btn-primary btn-lg w-100" style="height: 60px; font-size: 1.2rem;" onclick="appendToDisplay('7')">7</button>
+                                            </div>
+                                            <div class="col-3">
+                                                <button class="btn btn-primary btn-lg w-100" style="height: 60px; font-size: 1.2rem;" onclick="appendToDisplay('8')">8</button>
+                                            </div>
+                                            <div class="col-3">
+                                                <button class="btn btn-primary btn-lg w-100" style="height: 60px; font-size: 1.2rem;" onclick="appendToDisplay('9')">9</button>
+                                            </div>
+                                            <div class="col-3">
+                                                <button class="btn btn-secondary btn-lg w-100" style="height: 60px; font-size: 1.2rem;" onclick="appendToDisplay('-')">-</button>
+                                            </div>
+                                        </div>
+                                        <div class="row g-3 mt-3">
+                                            <div class="col-3">
+                                                <button class="btn btn-primary btn-lg w-100" style="height: 60px; font-size: 1.2rem;" onclick="appendToDisplay('4')">4</button>
+                                            </div>
+                                            <div class="col-3">
+                                                <button class="btn btn-primary btn-lg w-100" style="height: 60px; font-size: 1.2rem;" onclick="appendToDisplay('5')">5</button>
+                                            </div>
+                                            <div class="col-3">
+                                                <button class="btn btn-primary btn-lg w-100" style="height: 60px; font-size: 1.2rem;" onclick="appendToDisplay('6')">6</button>
+                                            </div>
+                                            <div class="col-3">
+                                                <button class="btn btn-secondary btn-lg w-100" style="height: 60px; font-size: 1.2rem;" onclick="appendToDisplay('+')">+</button>
+                                            </div>
+                                        </div>
+                                        <div class="row g-3 mt-3">
+                                            <div class="col-3">
+                                                <button class="btn btn-primary btn-lg w-100" style="height: 60px; font-size: 1.2rem;" onclick="appendToDisplay('1')">1</button>
+                                            </div>
+                                            <div class="col-3">
+                                                <button class="btn btn-primary btn-lg w-100" style="height: 60px; font-size: 1.2rem;" onclick="appendToDisplay('2')">2</button>
+                                            </div>
+                                            <div class="col-3">
+                                                <button class="btn btn-primary btn-lg w-100" style="height: 60px; font-size: 1.2rem;" onclick="appendToDisplay('3')">3</button>
+                                            </div>
+                                            <div class="col-3">
+                                                <button class="btn btn-success btn-lg w-100" style="height: 60px; font-size: 1.2rem;" onclick="calculate()">=</button>
+                                            </div>
+                                        </div>
+                                        <div class="row g-3 mt-3">
+                                            <div class="col-3">
+                                                <button class="btn btn-primary btn-lg w-100" style="height: 60px; font-size: 1.2rem;" onclick="appendToDisplay('0')">0</button>
+                                            </div>
+                                            <div class="col-3">
+                                                <button class="btn btn-primary btn-lg w-100" style="height: 60px; font-size: 1.2rem;" onclick="appendToDisplay('.')">.</button>
+                                            </div>
+                                            <div class="col-3">
+                                                <button class="btn btn-secondary btn-lg w-100" style="height: 60px; font-size: 1.2rem;" onclick="appendToDisplay('%')">%</button>
+                                            </div>
+                                            <div class="col-3">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row mt-5">
+                    <div class="col-md-8 mx-auto">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Calculator Features</h5>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Basic arithmetic operations (+, -, ×, ÷)</li>
+                                    <li class="list-group-item">Percentage calculations (%)</li>
+                                    <li class="list-group-item">Decimal point support</li>
+                                    <li class="list-group-item">Clear and backspace functions</li>
+                                    <li class="list-group-item">Mobile-friendly touch interface</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p>&copy; 2024 Chess Tacticians. All rights reserved.</p>
+            <p>
+                <a href="index.html" class="text-white text-decoration-none">Home</a> | 
+                <a href="rules.html" class="text-white text-decoration-none">Rules</a> | 
+                <a href="tactics.html" class="text-white text-decoration-none">Tactics</a> | 
+                <a href="calculator.html" class="text-white text-decoration-none">Calculator</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let display = document.getElementById('display');
+        let currentValue = '0';
+        let previousValue = '';
+        let operation = null;
+        let shouldResetDisplay = false;
+
+        function updateDisplay() {
+            display.value = currentValue;
+        }
+
+        function clearDisplay() {
+            currentValue = '0';
+            previousValue = '';
+            operation = null;
+            shouldResetDisplay = false;
+            updateDisplay();
+        }
+
+        function deleteLast() {
+            if (currentValue.length > 1) {
+                currentValue = currentValue.slice(0, -1);
+            } else {
+                currentValue = '0';
+            }
+            updateDisplay();
+        }
+
+        function appendToDisplay(value) {
+            if (shouldResetDisplay) {
+                currentValue = '0';
+                shouldResetDisplay = false;
+            }
+            
+            if (currentValue === '0' && value !== '.') {
+                currentValue = value;
+            } else if (value === '.' && currentValue.includes('.')) {
+                return;
+            } else if (['+', '-', '*', '/', '%'].includes(value)) {
+                if (operation !== null) {
+                    calculate();
+                }
+                previousValue = currentValue;
+                operation = value;
+                shouldResetDisplay = true;
+            } else {
+                currentValue += value;
+            }
+            updateDisplay();
+        }
+
+        function calculate() {
+            if (operation === null || previousValue === '') {
+                return;
+            }
+            
+            let result;
+            const prev = parseFloat(previousValue);
+            const current = parseFloat(currentValue);
+            
+            switch (operation) {
+                case '+':
+                    result = prev + current;
+                    break;
+                case '-':
+                    result = prev - current;
+                    break;
+                case '*':
+                    result = prev * current;
+                    break;
+                case '/':
+                    result = current !== 0 ? prev / current : 'Error';
+                    break;
+                case '%':
+                    result = prev % current;
+                    break;
+                default:
+                    return;
+            }
+            
+            currentValue = result.toString();
+            operation = null;
+            previousValue = '';
+            shouldResetDisplay = true;
+            updateDisplay();
+        }
+
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const body = document.body;
+
+        themeToggle.onclick = function() {
+            if (body.classList.contains('dark-theme')) {
+                body.classList.remove('dark-theme');
+                if (themeIcon) {
+                    themeIcon.textContent = '🌙';
+                }
+                localStorage.setItem('chessTheme', 'light');
+            } else {
+                body.classList.add('dark-theme');
+                if (themeIcon) {
+                    themeIcon.textContent = '☀️';
+                }
+                localStorage.setItem('chessTheme', 'dark');
+            }
+        };
+
+        window.addEventListener('load', function() {
+            const savedTheme = localStorage.getItem('chessTheme');
+            if (savedTheme === 'dark') {
+                body.classList.add('dark-theme');
+                if (themeIcon) {
+                    themeIcon.textContent = '☀️';
+                }
+            }
+        });
+
+        document.addEventListener('keydown', function(event) {
+            const key = event.key;
+            
+            if (key >= '0' && key <= '9') {
+                appendToDisplay(key);
+            } else if (key === '.') {
+                appendToDisplay('.');
+            } else if (key === '+' || key === '-' || key === '*' || key === '/' || key === '%') {
+                appendToDisplay(key);
+            } else if (key === 'Enter' || key === '=') {
+                calculate();
+            } else if (key === 'Escape' || key === 'c' || key === 'C') {
+                clearDisplay();
+            } else if (key === 'Backspace') {
+                deleteLast();
+            }
+        });
+    </script>
+</body>
+</html>

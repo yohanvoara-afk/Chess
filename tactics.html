@@ -516,69 +516,39 @@
         }
     </script>
     <script>
-        // Ultra-simple theme toggle
-        console.log('Script loading...');
-        
-        // Wait for everything to load
         window.addEventListener('load', function() {
-            console.log('Window fully loaded');
-            
             const themeToggle = document.getElementById('themeToggle');
             const themeIcon = document.getElementById('themeIcon');
             const body = document.body;
             
-            console.log('Looking for elements...');
-            console.log('themeToggle:', themeToggle);
-            console.log('themeIcon:', themeIcon);
-            console.log('themeIcon.textContent:', themeIcon ? themeIcon.textContent : 'not found');
-            console.log('body:', body);
-            
             if (!themeToggle) {
-                console.error('themeToggle not found!');
                 return;
             }
             
-            // Load saved theme on page load
             const savedTheme = localStorage.getItem('chessTheme');
-            console.log('Saved theme:', savedTheme);
             
             if (savedTheme === 'dark') {
                 body.classList.add('dark-theme');
                 if (themeIcon) themeIcon.textContent = '☀️';
-                console.log('Applied dark theme on load');
             } else {
                 if (themeIcon) themeIcon.textContent = '🌙';
-                console.log('Applied light theme on load');
             }
             
-            // Test with a simple alert first
             themeToggle.onclick = function() {
-                console.log('Button was clicked!');
-                console.log('Before change - themeIcon:', themeIcon, 'textContent:', themeIcon ? themeIcon.textContent : 'not found');
-                
-                // Simple theme toggle
                 if (body.classList.contains('dark-theme')) {
                     body.classList.remove('dark-theme');
                     if (themeIcon) {
                         themeIcon.textContent = '🌙';
-                        console.log('Changed to moon icon');
                     }
                     localStorage.setItem('chessTheme', 'light');
-                    console.log('Switched to light theme - saved to localStorage');
                 } else {
                     body.classList.add('dark-theme');
                     if (themeIcon) {
                         themeIcon.textContent = '☀️';
-                        console.log('Changed to sun icon');
                     }
                     localStorage.setItem('chessTheme', 'dark');
-                    console.log('Switched to dark theme - saved to localStorage');
                 }
-                
-                console.log('After change - textContent:', themeIcon ? themeIcon.textContent : 'not found');
             };
-            
-            console.log('Theme toggle attached successfully');
         });
     </script>
 </body>

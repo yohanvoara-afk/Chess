@@ -1,13 +1,9 @@
-// JavaScript for Chess Masters Website
-
-// Form Validation
 function validateForm() {
     const form = document.getElementById('contactForm');
     const name = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();
     const messageDiv = document.getElementById('formMessage');
     
-    // Reset previous validation states
     const inputs = form.querySelectorAll('.form-control');
     inputs.forEach(input => {
         input.classList.remove('is-invalid', 'is-valid');
@@ -16,7 +12,6 @@ function validateForm() {
     let isValid = true;
     let errorMessage = '';
     
-    // Validate name
     if (name === '') {
         document.getElementById('name').classList.add('is-invalid');
         errorMessage += 'Please enter your name.<br>';
@@ -29,7 +24,6 @@ function validateForm() {
         document.getElementById('name').classList.add('is-valid');
     }
     
-    // Validate email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (email === '') {
         document.getElementById('email').classList.add('is-invalid');
@@ -43,13 +37,11 @@ function validateForm() {
         document.getElementById('email').classList.add('is-valid');
     }
     
-    // Display result
     messageDiv.style.display = 'block';
     if (isValid) {
         messageDiv.className = 'alert alert-success';
         messageDiv.innerHTML = '<strong>Success!</strong> Your message has been sent successfully.';
         
-        // Reset form after 2 seconds
         setTimeout(() => {
             form.reset();
             inputs.forEach(input => {
@@ -62,10 +54,9 @@ function validateForm() {
         messageDiv.innerHTML = '<strong>Error:</strong><br>' + errorMessage;
     }
     
-    return false; // Prevent form submission
+    return false;
 }
 
-// Theme Switcher
 function toggleTheme() {
     const body = document.body;
     const themeButton = document.getElementById('themeToggle');
@@ -81,7 +72,6 @@ function toggleTheme() {
     }
 }
 
-// Load saved theme
 function loadTheme() {
     const savedTheme = localStorage.getItem('theme');
     const themeButton = document.getElementById('themeToggle');
@@ -94,7 +84,6 @@ function loadTheme() {
     }
 }
 
-// Gallery View Toggle
 function toggleGalleryView() {
     const gallery = document.getElementById('chessGallery');
     const pieces = gallery.querySelectorAll('img');
@@ -110,7 +99,6 @@ function toggleGalleryView() {
     });
 }
 
-// Smooth Scrolling
 function smoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -126,7 +114,6 @@ function smoothScroll() {
     });
 }
 
-// Image Gallery with Lightbox
 function initGallery() {
     const galleryImages = document.querySelectorAll('#chessGallery img');
     
@@ -138,13 +125,11 @@ function initGallery() {
 }
 
 function createLightbox(src, alt) {
-    // Remove existing lightbox
     const existingLightbox = document.querySelector('.lightbox');
     if (existingLightbox) {
         existingLightbox.remove();
     }
     
-    // Create new lightbox
     const lightbox = document.createElement('div');
     lightbox.className = 'lightbox';
     lightbox.style.cssText = `
@@ -174,13 +159,11 @@ function createLightbox(src, alt) {
     lightbox.appendChild(img);
     document.body.appendChild(lightbox);
     
-    // Close lightbox on click
     lightbox.addEventListener('click', function() {
         this.remove();
     });
 }
 
-// Chess Piece Animation
 function animateChessPieces() {
     const pieces = document.querySelectorAll('#chessGallery img');
     
@@ -192,7 +175,6 @@ function animateChessPieces() {
     });
 }
 
-// Navigation Active State
 function updateActiveNav() {
     const currentPath = window.location.pathname;
     const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
@@ -209,7 +191,6 @@ function updateActiveNav() {
     });
 }
 
-// Form Field Validation on Input
 function initFieldValidation() {
     const nameField = document.getElementById('name');
     const emailField = document.getElementById('email');
@@ -240,7 +221,6 @@ function initFieldValidation() {
     }
 }
 
-// Page Load Animations
 function initPageAnimations() {
     const elements = document.querySelectorAll('.card, .rule-section, .piece-movement');
     
@@ -257,13 +237,9 @@ function initPageAnimations() {
     });
 }
 
-// Calculator Functions (for tactics page)
 function initCalculator() {
-    // Calculator is already implemented in tactics.html
-    // This function can be used for additional calculator features
 }
 
-// Utility Functions
 function showNotification(message, type = 'info') {
     const notification = document.createElement('div');
     notification.className = `alert alert-${type} position-fixed top-0 start-50 translate-middle-x mt-3`;
@@ -278,7 +254,6 @@ function showNotification(message, type = 'info') {
     }, 3000);
 }
 
-// Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     loadTheme();
     smoothScroll();
@@ -288,7 +263,6 @@ document.addEventListener('DOMContentLoaded', function() {
     animateChessPieces();
     initPageAnimations();
     
-    // Add theme switcher button if not exists
     if (!document.getElementById('themeToggle')) {
         const themeButton = document.createElement('button');
         themeButton.id = 'themeToggle';
@@ -300,14 +274,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Keyboard Navigation
 document.addEventListener('keydown', function(e) {
-    // Press 'T' to toggle theme
     if (e.key === 't' || e.key === 'T') {
         toggleTheme();
     }
     
-    // Press 'Escape' to close lightbox
     if (e.key === 'Escape') {
         const lightbox = document.querySelector('.lightbox');
         if (lightbox) {
@@ -316,7 +287,6 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Performance optimization - debounce function
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -329,21 +299,17 @@ function debounce(func, wait) {
     };
 }
 
-// Resize handler with debounce
 const handleResize = debounce(() => {
-    // Handle responsive adjustments
     console.log('Window resized');
 }, 250);
 
 window.addEventListener('resize', handleResize);
 
-// Error handling
 window.addEventListener('error', function(e) {
     console.error('JavaScript error:', e.error);
     showNotification('An error occurred. Please refresh the page.', 'danger');
 });
 
-// Service Worker Registration (for PWA support)
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
         navigator.serviceWorker.register('/sw.js')
